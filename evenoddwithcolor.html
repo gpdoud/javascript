@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script lang="javascript">
+		var nbr = 0;
+		function button_inc() {
+			nbr++;
+			display(nbr);
+		}
+		function button_dec() {
+			nbr--;
+			display(nbr);
+		}
+		function display(aNbr) {
+			var color = (aNbr % 2 == 0) ? "red" : "black";
+			document.getElementById("out").style.color = color;
+			document.getElementById("out").value = aNbr;
+			console.log("The number is", aNbr, "in", color);
+		}
+		function init() {
+			document.getElementById("out").value = nbr;
+		}
+	</script>
+</head>
+<body onload="init()">
+<div style="text-align: center">
+	<button onclick="button_dec();">-</button>
+	<input id="out" type="text" style="text-align: center;"/>
+	<button onclick="button_inc();">+</button>
+</div>
+</body>
+</html>

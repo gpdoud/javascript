@@ -5,11 +5,11 @@
 	<script lang="javascript">
 		function button_click() {
 			var nbr = document.getElementById("nbr").value;
-			var result = "even";
-			if(nbr % 2 != 0) {
-				result = "odd";
-			}
-			// PRO: var result = (nbr%2==0) ? "even" : "odd";
+			// var result = "even";
+			// if(nbr % 2 != 0) {
+			// 	result = "odd";
+			// }
+			var result = (nbr%2==0) ? "divisible by 2" : "not divisible by 2";
 			console.log("The number is", nbr, "is", result);
 
 			document.getElementById("out").value = result;
