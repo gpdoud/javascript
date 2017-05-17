@@ -5,18 +5,19 @@
 	<script lang="javascript">
 		var nbr = 0;
 		function button_inc() {
-			nbr++;
-			display(nbr);
+			display(++nbr);
 		}
 		function button_dec() {
-			nbr--;
-			display(nbr);
+			display(--nbr);
 		}
 		function display(aNbr) {
 			var color = (aNbr % 2 == 0) ? "red" : "black";
-			document.getElementById("out").style.color = color;
-			document.getElementById("out").value = aNbr;
-			console.log("The number is", aNbr, "in", color);
+			var italic = (aNbr % 3 == 0) ? "italic" : "normal";
+			var control = document.getElementById("out");
+			control.style.color = color;
+			control.style.fontStyle = italic;
+			control.value = aNbr;
+			// console.log("The number is", aNbr, "in", color);
 		}
 		function init() {
 			document.getElementById("out").value = nbr;
