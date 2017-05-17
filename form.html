@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script lang="javascript">
+		function submit_clicked() {
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var phone = document.getElementById("phone").value;
+			console.log(name, email, phone);
+		}
+	</script>
+</head>
+<body>
+<div id="content" style="border: 1px solid silver;margin: 0 auto; padding: 10px;width:40%;">
+	<form>
+		<table>
+			<tr>
+				<td><label>Name:</label></td>
+				<td><input id="name" type="text" size="30" placeholder="Name"></td>
+			</tr>
+			<tr>
+				<td><label>Email:</label></td>
+				<td><input id="email" type="text" placeholder="Email"></td>
+			</tr>
+			<tr>
+				<td><label>Phone:</label></td>
+				<td><input id="phone" type="text" placeholder="Phone"></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center;">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div style="text-align: center;">
+		<button onclick="submit_clicked()">Submit</button>
+	</div>
+</div>
+</body>
+</html>
