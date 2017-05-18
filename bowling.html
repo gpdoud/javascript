@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment: Bowling</title>
+	<link href="" type="text/css" rel="stylesheet"></link>
+	<script lang="javascript">
+		var frames = [0,0,0,0,0,0,0,0,0,0];
+		var gameTotal = 0;
+		var frame = 0;
+		function AddScore_click() {
+			var aScore = document.getElementById("score").value;
+			var score = parseInt(aScore);
+			frames[frame++] = parseInt(score);
+			if(frame > 9) {
+				document.getElementById("post").disabled = true;
+			}
+			displayScore(frames);
+		}
+		function totalScore(scores) {
+			var total = 0;
+			for(var idx = 0; idx < scores.length; idx++) {
+				total += scores[idx];
+			}
+			return total;
+		}
+		function displayScore(scores) {
+			var tbody = document.getElementById("scoresheet");
+			tbody.innerHTML = ""; // clear it
+			var tr = document.createElement("tr");
+			tbody.appendChild(tr);
+			for(var idx = 0; idx < scores.length; idx++) {
+				var score = scores[idx];
+				var td = document.createElement("td");
+				var score = document.createTextNode(score);
+				td.appendChild(score)
+				td.style.textAlign = "center";
+				tr.appendChild(td);
+			}
+			var td = document.createElement("td");
+			var score = document.createTextNode(totalScore(scores));
+			td.appendChild(score)
+			tr.appendChild(td);
+		}
+		function displayMessage(message) {
+			document.getElementById("message").value = message;
+		}
+	</script>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		table, tr, td {
+			border: 1px solid silver;
+			text-align: center;
+		}
+	</style>
+</head>
+<body onload="displayScore(score);">
+	<div>
+		<input id="score" type="text" placeholder="Score" />
+		<button id="post" onclick="AddScore_click()">Add Score</button>
+	</div>
+	<div>
+		<table style="width:80%;border:1px solid silver;">
+			<tbody id="scoresheet">
+			</tbody>
+		</table>
+	</div>
+	<div style="display:none;">
+		<input id="message" type="text" readonly="readonly" />
+	</div>
+</body>
+</html>
