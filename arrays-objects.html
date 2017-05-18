@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript: Arrays & Objects</title>
+	<!-- <link href="" type="text/css" rel="stylesheet"></link> -->
+	<script lang="javascript">
+		var grades = [];
+		function AddGrade_click() {
+			console.log("clicked AddGrade_click()");
+			var grade = document.getElementById("agrade").value;
+			// TODO MUST convert from string to number
+			// TODO SHOULD edit the grade here.
+			grades.push(parseInt(grade));
+			displayGrades(grades);
+		}
+		function displayGrades(grades) {
+			var tbody = document.getElementById("gradesdisplay");
+			tbody.innerHTML = "";
+			for(var idx = 0; idx < grades.length; idx++) {
+				var aGrade = grades[idx];
+				var tr = document.createElement("tr");
+				var td = document.createElement("td");
+				tr.appendChild(td);
+				var txt = document.createTextNode(aGrade);
+				td.appendChild(txt);
+				tbody.appendChild(tr);
+			}
+			calcAverage(grades);
+		}
+		function calcAverage(grades) {
+			var totalGrades = 0;
+			for(var idx = 0; idx < grades.length; idx++) {
+				var aGrade = grades[idx];
+				totalGrades += aGrade;
+			}
+			// calculate the average
+			var averageGrade = totalGrades / grades.length;
+			// display it
+			var divCtrl = document.getElementById("avg");
+			divCtrl.innerHTML = "<label>Average is " + averageGrade + "</label>";
+			curveRequired(grades);
+		}
+		var curveAmount = 0;
+		function curveRequired(grades) {
+			var shouldCurve = true;
+			for(var idx = 0; idx < grades.length; idx++) {
+				var aGrade = grades[idx];
+				if(aGrade == 100) {
+					shouldCurve = false;
+				}
+			}
+			var yesno = (shouldCurve == true) ? "Yes" : "No";
+			var divCtrl = document.getElementById("curve");
+			divCtrl.innerHTML = "Should curve? " + yesno;
+			if(shouldCurve == true) {
+				curveAmount = calcCurveAmount(grades);
+			}
+		}
+		function calcCurveAmount(grades) {
+			grades.sort();
+			var highestGrade = grades[0];
+			var curveAmt = (100 - highestGrade) * .1;
+			return curveAmt;
+		}
+		function curveGrades(amountToCurve, grades) {
+			for(var idx = 0; idx < grades.length; idx++) {
+				grades[idx] += amountToCurve;	
+			}
+		}
+		function init() {
+
+		}
+		function AddCurve_click() {
+			curveGrades(curveAmount, grades);
+			displayGrades(grades);
+		}
+	</script>
+	<!-- <style></style> -->
+</head>
+<body onload="init()">
+	<h3>Final grades</h3>
+	<div id="entry">
+		<input id="agrade" type="text" placeholder="Grades">
+		<button onclick="AddGrade_click()">Add grade</button>
+		<button onclick="AddCurve_click()">Curve grades</button>
+	</div>
+	<p />
+	<div id="grades">
+		<table style="border:1px solid silver;">
+			<thead>
+				<tr><td>Final Grades</td></tr>
+			</thead>
+			<tbody id="gradesdisplay">
+
+			</tbody>
+		</table>
+	</div>
+	<div id="avg">
+		
+	</div>
+	<div id="curve">
+	</div>
+</body>
+</html>
