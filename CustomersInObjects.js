@@ -5,7 +5,8 @@ var customers = [
 		address: "123 Any Street",
 		city: "Berlin",
 		state: "Germany",
-		postalcode: "ABC123" 
+		postalcode: "ABC123",
+		creditlimit: 100000 
 	}, 
 	{
 		id: 1010, 
@@ -13,7 +14,8 @@ var customers = [
 		address: "1 Google Way",
 		city: "Mountain View",
 		state: "California",
-		postalcode: "12345" 
+		postalcode: "12345",
+		creditlimit: 1000000 
 	}, 
 	{
 		id: 1020, 
@@ -21,9 +23,31 @@ var customers = [
 		address: "2 Guitar Way",
 		city: "New York",
 		state: "New York",
-		postalcode: "10101" 
+		postalcode: "10101", 
+		creditlimit: 10000 
 	}
 ];
+function formatTableData(trCtrl, data) {
+	var tdCtrl = document.createElement("td");
+	trCtrl.appendChild(tdCtrl);
+	var textCtrl = document.createTextNode(data);
+	tdCtrl.appendChild(textCtrl);
+}
+function formatTableRow(id, name, address, postal, credit) {
+	var tbodyCtrl = document.getElementById("customers");
+	var trCtrl = document.createElement("tr");
+	tbodyCtrl.appendChild(trCtrl);
+	// id
+	formatTableData(trCtrl, id);
+	// name
+	formatTableData(trCtrl, name);
+	// name
+	formatTableData(trCtrl, address);
+	// name
+	formatTableData(trCtrl, postal);
+	// credit
+	formatTableData(trCtrl, credit);
+}
 function listCustomers() {
 	console.log("Called listCustomers()");
 	for(var idx = 0; idx < customers.length; idx++) {
@@ -33,6 +57,10 @@ function listCustomers() {
 		var citystpostal = customers[idx].city + ", " +
 							customers[idx].state + " " +
 							customers[idx].postalcode;
-		console.log(id, name, address, citystpostal);
-	}
+		var creditLimit = parseInt(customers[idx].creditlimit);
+		console.log(id, name, address, citystpostal, creditLimit);
+
+		formatTableRow(id, name, address, citystpostal, creditLimit);
+
+	} // end for
 }
