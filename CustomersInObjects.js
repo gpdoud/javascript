@@ -26,4 +26,13 @@ var customers = [
 ];
 function listCustomers() {
 	console.log("Called listCustomers()");
+	for(var idx = 0; idx < customers.length; idx++) {
+		var id = customers[idx].id;
+		var name = customers[idx].name;
+		var address = customers[idx].address;
+		var citystpostal = customers[idx].city + ", " +
+							customers[idx].state + " " +
+							customers[idx].postalcode;
+		console.log(id, name, address, citystpostal);
+	}
 }
