@@ -2,10 +2,22 @@
 <html>
 <head>
 	<title>Javascript - Customers in Objects</title>
-	<link href="" type="text/css" rel="stylesheet"></link>
+	<link href="customersinobjects.css" type="text/css" rel="stylesheet"></link>
 	<script src="customersinobjects.js" type="text/javascript"></script>	
 	<style></style>
 </head>
-<body>
+<body onload="listCustomers()">
+	<table>
+	<thead>
+		<tr>
+			<td>ID:</td>
+			<td>NAME:</td>
+			<td>ADDRESS:</td>
+			<td>City/State/Postal</td>
+		</tr>
+	</thead>
+	<tbody id="customers">
+	</tbody>
+	</table>
 </body>
 </html>

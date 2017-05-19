@@ -23,4 +23,7 @@ var customers = [
 		state: "New York",
 		postalcode: "10101" 
 	}
-]
+];
+function listCustomers() {
+	console.log("Called listCustomers()");
+}
